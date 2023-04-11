@@ -1,4 +1,5 @@
 ﻿@page
+@using OrangeTentacle.PsiConv.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -14,28 +15,38 @@ adapted for HTML5.</p>
 <div>
     <form method="post" enctype="multipart/form-data">
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" asp-for="ConvRequest.AsText" />
+            <input type="radio" asp-for="ConvDto.ConvertTo" value="@ConversionType.Text" class="form-check-input" />
             <label class="form-check-label" for="exampleCheck1">As Text</label>
         </div>
 
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" asp-for="ConvRequest.AsHtml" />
+            <input type="radio" asp-for="ConvDto.ConvertTo" value="@ConversionType.Html" class="form-check-input" />
             <label class="form-check-label" for="exampleCheck1">As Html</label>
         </div>
 
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" asp-for="ConvRequest.AsMarkdown" />
+            <input type="radio" asp-for="ConvDto.ConvertTo" value="@ConversionType.Markdown" class="form-check-input" />
             <label class="form-check-label" for="exampleCheck1">As Markdown</label>
         </div>
 
         <div class="mb-3">
             <label for="formFileMultiple" class="form-label">Select Files:</label>
-            <input class="form-control" type="file" asp-for="ConvRequest.Upload" multiple>
+            <input class="form-control" type="file" asp-for="ConvDto.Upload">
         </div>
 
         <div>
             <button type="submit" class="btn btn-primary">Convert</button>
-            <button type="button" class="btn btn-secondary">Reset</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
         </div>
-    </form>
+
+   </form>
 </div>
+
+<div class="form">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Converted File:</label>
+            <textarea class="form-control" rows="20" asp-for="ConvDto.ConvertResponse"></textarea>
+        </div>
+</div>
+
+

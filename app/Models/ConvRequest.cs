@@ -1,10 +1,10 @@
 namespace OrangeTentacle.PsiConv.Models;
 
-public class ConvRequest
+public class ConvDto
 {
-    public bool AsText { get; set; }
-    public bool AsHtml { get; set; }
-    public bool AsMarkdown { get; set; }
+    public ConversionType ConvertTo { get; set; } = ConversionType.Markdown;
 
-    public IList<IFormFile> Upload { get; set; }
+    public IFormFile? Upload { get; set; }
+
+    public string? ConvertResponse { get; set;}
 }
