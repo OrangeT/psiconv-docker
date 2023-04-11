@@ -1,0 +1,41 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>PsiConv Document Conversion</h1>
+
+<p>This page converts Psion Word documents using a fork of <a href="https://github.com/kianryan/psiconv">PsiConv</a>
+adapted for HTML5.</p>
+
+<p>Markdown conversion is performed using <a href="https://pandoc.org/">Pandoc</a>.</p>
+
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" asp-for="ConvRequest.AsText" />
+            <label class="form-check-label" for="exampleCheck1">As Text</label>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" asp-for="ConvRequest.AsHtml" />
+            <label class="form-check-label" for="exampleCheck1">As Html</label>
+        </div>
+
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" asp-for="ConvRequest.AsMarkdown" />
+            <label class="form-check-label" for="exampleCheck1">As Markdown</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Select Files:</label>
+            <input class="form-control" type="file" asp-for="ConvRequest.Upload" multiple>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+            <button type="button" class="btn btn-secondary">Reset</button>
+        </div>
+    </form>
+</div>
